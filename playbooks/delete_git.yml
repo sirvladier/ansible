@@ -1,0 +1,8 @@
+- name: Delete git from other hosts
+  hosts: other
+  tasks:
+    - name: Delete git
+      ansible.builtin.apt:
+        name: git
+        state: absent
+      become: true
