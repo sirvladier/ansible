@@ -10,11 +10,9 @@
       group: root
       mode: '0644'
     become: True
-  
   - name: Install Git
     ansible.builtin.apt:
       name: git
       state: present
-      update_cache: yes
-    become: True
-
+      update_cache: true
+    become: true

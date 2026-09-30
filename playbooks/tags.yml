@@ -1,0 +1,25 @@
+---
+- hosts: all
+  become: true
+  tasks:
+    - name: Apt update cache
+      ansible.builtin.apt:
+        update_cache: true
+      tags: packages
+
+    - name: Install NodeJS
+      ansible.builtin.apt:
+        name: nodejs
+        state: present
+      tags: packages
+
+    - name: Create user
+      ansible.builtin.user:
+        name: "{{ item }}"
+        state: present
+        shell: /bin/bash
+      loop:
+        - alice
+        - bob
+        - volzhin
+      tags: users
